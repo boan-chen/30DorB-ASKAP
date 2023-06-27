@@ -1,6 +1,6 @@
 # Spectral Index Analysis
 
-This repository contains the code and results of the spectral index analysis of the LMC region at 888 MHz, 1367 MHz, and 1419 MHz frequencies. The analysis focuses on two distinct regions, referred to as region 1 and region 2, within the LMC.
+This repository contains the code and results of the spectral index analysis of the LMC region at 888 MHz, 1367 MHz, and 1419 MHz frequencies. 
 
 ## Data Preparation
 
@@ -12,11 +12,14 @@ To estimate the background noise level, an empty region was selected, and the fl
 
 ## Spectral Index Calculation
 
-The spectral index was calculated as the logarithmic ratio of flux densities at different frequencies, following the equation: $$F_\nu \propto \nu^\alpha$$. The spectral index values were determined for the selected points in region 1 and region 2. (See HST_spectral_index_overlay.png)
+The spectral index was calculated as the logarithmic ratio of flux densities at different frequencies, following the equation: $$F_\nu \propto \nu^\alpha$$. 
+
 
 ## Histogram Analysis
 
 A histogram was generated to visualize the distribution of the spectral index values. To identify statistically significant spectral indices, a rejection criterion based on a probability threshold of 0.05 is applied. Spectral indices failing to meet the criterion were masked, indicating their potential lack of significance. 
+
+![image](https://github.com/boan-chen/30DorB-ASKAP-Statistics/assets/108161781/e0948112-0b66-4a9b-be28-e8856c39d0d2)
 
 
 ## Results
@@ -24,6 +27,9 @@ A histogram was generated to visualize the distribution of the spectral index va
 The analysis revealed two distinct components in the spectral index map. Region 1 represents the main structure and shows a steep negative spectral index, indicative of synchrotron emission. On the other hand, region 2 exhibits a filament-like structure with a positive spectral index, suggesting the presence of thermal radiated structures associated with free-free emission processes.
 
 The provided figures illustrate the spectral index map for region 1 and region 2, highlighting their different characteristics. Additionally, the histogram of the spectral index distribution is included, showcasing the statistical significance of the spectral indices. The median value of the spectral index is -0.7, which is consistent with the result of Pennock et al (2021).
+
+![image](https://github.com/boan-chen/30DorB-ASKAP-Statistics/assets/108161781/70ddac6c-d059-4bd8-9f64-5c73691a85c9)
+
 
 ## Usage
 

@@ -19,8 +19,7 @@ The spectral index was calculated as the logarithmic ratio of flux densities at 
 
 A histogram was generated to visualize the distribution of the spectral index values. To identify statistically significant spectral indices, a rejection criterion based on a probability threshold of 0.05 is applied. Spectral indices failing to meet the criterion were masked, indicating their potential lack of significance. 
 
-![image](https://github.com/boan-chen/30DorB-ASKAP-Statistics/assets/108161781/e0948112-0b66-4a9b-be28-e8856c39d0d2)
-
+![image](https://github.com/boan-chen/30DorB-ASKAP/assets/108161781/a5b4b749-cbae-42d0-8fb3-7ab7688f79ea)
 
 ## Results
 
@@ -29,7 +28,6 @@ The analysis revealed two distinct components in the spectral index map. Region 
 The provided figures illustrate the spectral index map for region 1 and region 2, highlighting their different characteristics. Additionally, the histogram of the spectral index distribution is included, showcasing the statistical significance of the spectral indices. The median value of the spectral index is -0.7, which is consistent with the result of Pennock et al (2021).
 
 ![image](https://github.com/boan-chen/30DorB-ASKAP-Statistics/assets/108161781/70ddac6c-d059-4bd8-9f64-5c73691a85c9)
-
 
 ## Usage
 

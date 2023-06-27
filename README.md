@@ -27,7 +27,7 @@ The analysis revealed two distinct components in the spectral index map. Region 
 
 The provided figures illustrate the spectral index map for region 1 and region 2, highlighting their different characteristics. Additionally, the histogram of the spectral index distribution is included, showcasing the statistical significance of the spectral indices. The median value of the spectral index is -0.7, which is consistent with the result of Pennock et al (2021).
 
-![image](https://github.com/boan-chen/30DorB-ASKAP-Statistics/assets/108161781/70ddac6c-d059-4bd8-9f64-5c73691a85c9)
+![image](https://github.com/boan-chen/30DorB-ASKAP/assets/108161781/5d486601-ca22-48a1-a071-2bf3739b88b4)
 
 ## Usage
 

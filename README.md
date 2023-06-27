@@ -12,11 +12,12 @@ To estimate the background noise level, an empty region was selected, and the fl
 
 ## Spectral Index Calculation
 
-The spectral index was calculated as the logarithmic ratio of flux densities at different frequencies, following the equation: $$F_\nu \propto \nu^\alpha$$. The spectral index values were determined for the selected points in region 1 and region 2.
+The spectral index was calculated as the logarithmic ratio of flux densities at different frequencies, following the equation: $$F_\nu \propto \nu^\alpha$$. The spectral index values were determined for the selected points in region 1 and region 2. (See HST_spectral_index_overlay.png)
 
 ## Histogram Analysis
 
-A histogram was generated to visualize the distribution of the spectral index values. To identify statistically significant spectral indices, a rejection criterion based on a probability threshold of 0.05 is applied. Spectral indices failing to meet the criterion were masked, indicating their potential lack of significance.
+A histogram was generated to visualize the distribution of the spectral index values. To identify statistically significant spectral indices, a rejection criterion based on a probability threshold of 0.05 is applied. Spectral indices failing to meet the criterion were masked, indicating their potential lack of significance. 
+
 
 ## Results
 

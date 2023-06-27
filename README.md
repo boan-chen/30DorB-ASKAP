@@ -1,6 +1,6 @@
 # Spectral Index Analysis
 
-This repository contains the code and results of the spectral index analysis of the LMC region at 888 MHz, 1367 MHz, and 1419 MHz frequencies. 
+This repository contains the code and results of the spectral index analysis of the LMC region at 888 MHz, 1367 MHz, and 1419 MHz frequencies. The steps of the analysis are referred to Pennock et al (2021), as there are only three frequencies available for 30 Dor B in ASKAP public archives. The flux errors are estimated based on Prof. Sheng-Yuan's advice during the 2022 ISM class.
 
 ## Data Preparation
 
@@ -12,7 +12,7 @@ To estimate the background noise level, an empty region was selected, and the fl
 
 ## Spectral Index Calculation
 
-The spectral index was calculated as the logarithmic ratio of flux densities at different frequencies, following the equation: $$F_\nu \propto \nu^\alpha$$. 
+The spectral index was calculated as the logarithmic ratio of flux densities at different frequencies, following the equation: $$F_\nu \propto \nu^\alpha$$
 
 
 ## Histogram Analysis

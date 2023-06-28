@@ -40,3 +40,6 @@ Please acknowledge the following reference if you use this spectral index analys
 - Clara M Pennock and others, The ASKAP-EMU Early Science Project: 888 MHz radio continuum survey of the Large Magellanic Cloud, Monthly Notices of the Royal Astronomical Society, Volume 506, Issue 3, September 2021, Pages 3540–3559, https://doi.org/10.1093/mnras/stab1858
 
 Feel free to explore the repository and utilize the results for further research and analysis.
+
+## Note for me
+Images are to be binned to 2*2 pixels, or 36*36 arcsec. Find Chung for convolving ATCA 5GHz (6cm telescope) data. After the steps, send Wang an email for advice.

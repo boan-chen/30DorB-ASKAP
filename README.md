@@ -41,5 +41,5 @@ Please acknowledge the following reference if you use this spectral index analys
 
 Feel free to explore the repository and utilize the results for further research and analysis.
 
-## Note for me
+## Ongoing works
 Images are to be binned to 2*2 pixels, or 36*36 arcsec. Find Chung for convolving ATCA 5GHz (6cm telescope) data. After the steps, send Wang an email for advice.

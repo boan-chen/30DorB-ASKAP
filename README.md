@@ -31,7 +31,7 @@ The provided figures illustrate the spectral index map for region 1 and region 2
 
 ## Usage
 
-The code and data files necessary to reproduce the analysis are provided in the repository. Detailed instructions on running the code are documented in the comments of pipline.py.
+The code and data files necessary to reproduce the analysis are provided in the repository. Detailed instructions on running the code are documented in the comments of pipline.py. Note that this is an ongoing project; hence, please be cautious about using the preliminary results and the working pipelines.
 
 ## References
 
@@ -39,7 +39,7 @@ Please acknowledge the following reference if you use this spectral index analys
 
 - Clara M Pennock and others, The ASKAP-EMU Early Science Project: 888 MHz radio continuum survey of the Large Magellanic Cloud, Monthly Notices of the Royal Astronomical Society, Volume 506, Issue 3, September 2021, Pages 3540–3559, https://doi.org/10.1093/mnras/stab1858
 
-Feel free to explore the repository and utilize the results for further research and analysis.
+You are suggested to discuss it with me before you use this repository for further research, as a complete analysis and statistical justifications are yet to be provided.
 
 ## Ongoing works
 Images are to be binned to $2\times 2$ pixels, or 36 arcsec by 36 arcsec. I will find Chung for convolving ATCA 5GHz (6cm telescope) data. After the steps, I will send Wang an email for advice on intepreting data.

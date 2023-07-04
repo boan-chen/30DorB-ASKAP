@@ -16,7 +16,7 @@ def estimate_background_noise(image_data, x_start, y_start, width=10, height=10)
     y_end = y_start + height
     background_pixels = image_data[y_start:y_end, x_start:x_end]
     background_noise = np.mean(background_pixels)
-    return background_noise
+    return max(0, background_noise)
 
 # Function to calculate signal-to-noise ratio (SNR)
 def calculate_snr(image_data, background_noise=0, neighborhood_radius=3):
@@ -37,6 +37,21 @@ image_data_888 = fits.getdata(file_name_888, ext=0)[0][0]
 image_data_1367 = fits.getdata(file_name_1367, ext=0)[0][0]
 image_data_1419 = fits.getdata(file_name_1419, ext=0)[0][0]
 
+# Calculate the new dimensions for binning
+height, width = image_data_888.shape
+new_height = height // 2
+new_width = width // 2
+
+# Trim the image to fit the new dimensions
+trimmed_image_data_888 = image_data_888[:new_height*2, :new_width*2]
+trimmed_image_data_1367 = image_data_1367[:new_height*2, :new_width*2]
+trimmed_image_data_1419 = image_data_1419[:new_height*2, :new_width*2]
+
+# Binning the images by 2x2
+binned_image_data_888 = trimmed_image_data_888.reshape(new_height, 2, new_width, 2).mean(axis=(1, 3))
+binned_image_data_1367 = trimmed_image_data_1367.reshape(new_height, 2, new_width, 2).mean(axis=(1, 3))
+binned_image_data_1419 = trimmed_image_data_1419.reshape(new_height, 2, new_width, 2).mean(axis=(1, 3))
+
 # Plot original images
 plt.figure(figsize=(15, 5))
 plt.subplot(1, 3, 1)
@@ -55,7 +70,7 @@ plt.tight_layout()
 plt.show()
 
 #%% Plot SNR masked images
-snr_cut = 5
+snr_cut = 0
 # Estimate background noise
 bn_888 = estimate_background_noise(image_data_888, 5, 5, width=10, height=10)
 bn_1367 = estimate_background_noise(image_data_1367, 5, 5, width=10, height=10)
@@ -92,7 +107,7 @@ plt.tight_layout()
 plt.show()
 
 #%% Plot masked spectral index
-spectral_index_snr_cut = 0
+spectral_index_snr_cut = 3
 # Calculate flux values and errors
 flux_888 = masked_image_888
 flux_1367 = masked_image_1367
@@ -119,6 +134,51 @@ spectral_index_masked = np.where(np.abs(1/flux_ratio_error) <= spectral_index_sn
 plt.imshow(spectral_index_masked, cmap='jet', vmin=-2, vmax=2)
 plt.colorbar(label='Spectral Index')
 plt.show()
+
+
+#%% masked_bin_image on SNR threshold and new background noise
+snr_cut = 3
+# Estimate background noise
+binned_bn_888 = estimate_background_noise(binned_image_data_888, 5, 5, width=10, height=10)
+binned_bn_1367 = estimate_background_noise(binned_image_data_1367, 5, 5, width=10, height=10)
+binned_bn_1419 = estimate_background_noise(binned_image_data_1419, 5, 5, width=10, height=10)
+
+binned_snr_image_888 = calculate_snr(binned_image_data_888, background_noise=binned_bn_888)
+binned_snr_image_1367 = calculate_snr(binned_image_data_1367, background_noise=binned_bn_1367)
+binned_snr_image_1419 = calculate_snr(binned_image_data_1419, background_noise=binned_bn_1419)
+
+binned_masked_image_888 = np.where(np.abs(binned_snr_image_888) <= snr_cut, np.nan, binned_image_data_888)
+binned_masked_image_1367 = np.where(np.abs(binned_snr_image_1367) <= snr_cut, np.nan, binned_image_data_1367)
+binned_masked_image_1419 = np.where(np.abs(binned_snr_image_1419) <= snr_cut, np.nan, binned_image_data_1419)
+
+plt.figure(figsize=(15, 5))
+plt.subplot(1, 3, 1)
+plt.imshow(binned_masked_image_888)
+plt.colorbar(cmap='viridis')
+plt.title('SNR Maked Image (888)')
+plt.subplot(1, 3, 2)
+plt.imshow(binned_masked_image_1367)
+plt.colorbar(cmap='viridis')
+plt.title('SNR Masked Image (1367)')
+plt.subplot(1, 3, 3)
+plt.imshow(binned_masked_image_1419)
+plt.colorbar(cmap='viridis')
+plt.title('SNR Masked Image (1419)')
+plt.tight_layout()
+plt.show()
+
+binned_flux_888 = binned_masked_image_888
+binned_flux_1367 = binned_masked_image_1367
+binned_flux_1419 = binned_masked_image_1419
+
+binned_spectral_index_masked = np.log10(binned_flux_888 / binned_flux_1367) / np.log10(888 / 1367)
+plt.imshow(binned_spectral_index_masked, cmap='jet', vmin=-2, vmax=2)
+plt.colorbar()
+plt.title('Binned Spectral Index')
+plt.tight_layout()
+plt.show()
+
+
 #%% Plot histogram
 
 # Flatten the spectral index masked array and filter out NaN values
@@ -149,8 +209,8 @@ header = fits.Header()
 header['SIMPLE'] = True
 header['BITPIX'] = -64
 header['NAXIS'] = 2
-header['NAXIS1'] = spectral_index_masked.shape[1]
-header['NAXIS2'] = spectral_index_masked.shape[0]
+header['NAXIS1'] = binned_spectral_index_masked.shape[1]
+header['NAXIS2'] = binned_spectral_index_masked.shape[0]
 header['BUNIT'] = 'Spectral Index'
 header['CTYPE1'] = 'RA---SIN'
 header['CTYPE2'] = 'DEC--SIN'
@@ -164,8 +224,8 @@ header['CUNIT1'] = 'deg'
 header['CUNIT2'] = 'deg'
 header['EQUINOX'] = 2000
 
-hdu = fits.PrimaryHDU(data=spectral_index_masked, header=header)
+hdu = fits.PrimaryHDU(data=binned_spectral_index_masked, header=header)
 
-output_file = 'spectral_index_new.fits'
+output_file = 'spectral_index_binned.fits'
 hdu.writeto(output_file, overwrite=True)
 # %%

@@ -31,7 +31,7 @@ The provided figures illustrate the spectral index map for region 1 and region 2
 
 ## Usage
 
-The code and data files necessary to reproduce the analysis are provided in the repository. Detailed instructions on running the code are documented in the comments of pipline.py. Note that this is an ongoing project; hence, please be cautious about using the preliminary results and the working pipelines.
+The code and data files necessary to reproduce the analysis are provided in the repository. Images are to be binned to $2\times 2$ pixels, or 36 arcsec by 36 arcsec. Detailed instructions on running the code are documented in the comments of pipline.py. Note that this is an ongoing project; hence, please be cautious about using the preliminary results and the working pipelines.
 
 ## References
 
@@ -41,5 +41,5 @@ Please acknowledge the following reference if you use this spectral index analys
 
 You are suggested to discuss it with me before you use this repository for further research, as a complete analysis and statistical justifications are yet to be provided.
 
-## Ongoing works
-Images are to be binned to $2\times 2$ pixels, or 36 arcsec by 36 arcsec. I will find Chung for convolving ATCA 5GHz (6cm telescope) data. After the steps, I will send Wang an email for advice on intepreting data.
+## Notes
+This preliminary analysis was conducted in collaboration with the Institute of Astronomy and Astrophysics at Academia Sinica and the Graduate Institute of Astrophysics at National Taiwan University. Our findings have been published in [New Insights on 30 Dor B Revealed by High-quality Multiwavelength Observations](https://iopscience.iop.org/article/10.3847/1538-3881/acff72). Notably, the results presented in this paper utilized an updated dataset, providing clearer qualitative features of the remnant. For further details regarding the radio image analysis in the final version of this paper, please contact [Kuo-Song Wang](https://www.asiaa.sinica.edu.tw/people/cv_c.php?i=kswang).
